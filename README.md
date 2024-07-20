@@ -8,4 +8,4 @@ docker pull juanse77/fake-new-domains-web:latest
 docker run --rm -p 5000:5000 juanse77/fake-new-domains-web:latest
 ```
 
-Finaly you can access to the application in http://localhost:5000
+Finally, you can access to the application in http://localhost:5000
