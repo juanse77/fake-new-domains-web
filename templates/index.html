@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake New Domains</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1>Fake New Domains</h1>
+        </header> 
+
+        <label for="dropdown">Select the pattern:</label>
+        <select id="dropdown">
+			{% for pattern in patterns %}
+				<option value="{{ loop.index0 }}" {% if loop.index0 == selected_pattern %}selected{% endif %}>{{ pattern }}</option>
+			{% endfor %}
+        </select>
+
+		<div id="domains">
+			<table id="results-table">
+				<thead>
+					<tr>
+						<th class="checkbox">Select</th>
+						<th style="text-align: left;">Domain</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for domain in domains %}
+				<tr>
+					<td class="checkbox"><input type="checkbox" value="{{ domain }}"></td>
+					<td>{{ domain }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+        <div>
+            <button id="add">Add Selected</button>
+        </div>
+        
+        <textarea id="results" rows="10" cols="50" placeholder="Selected items will appear here..."></textarea>
+
+        <div>
+            <button id="clear">Clear</button>
+            <button id="export">Export</button>
+			<button id="update">Update database</button>
+			<input type="text" id="days" placeholder="1-4 days">
+        </div>
+    
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

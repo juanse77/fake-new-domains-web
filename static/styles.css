@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Cyber-War';
+    src: url('./GODOFWAR.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 20px;
+}
+
+main {
+    max-width: 800px;
+    padding: 5px 15px 15px 15px;
+    margin: 0 auto;
+    height: 100%;
+    background-color: #dde5e9;
+}
+
+h1 {
+	font-family: 'Cyber-War', Arial, sans-serif;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+select {
+    display: block;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 100%;
+    max-width: 770px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 770px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: white;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#add {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    margin: 10px 0;
+}
+
+#clear, #export, #update {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+textarea {
+    width: 100%;
+    margin: 15px 0;
+    padding: 10px;
+    max-width: 770px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+th {
+    text-align: center;
+}
+
+.checkbox {
+    text-align: center;
+    width: 30px;
+}
+
+button {
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    border-radius: 5px;
+}
+
+#domains {
+    height: 400px;
+    overflow: auto;
+    background-color: white;
+    max-width: 770px;
+}
+
+#days {
+	width: 100px;
+	height: 26px;
+}
