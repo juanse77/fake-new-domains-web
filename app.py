@@ -59,7 +59,13 @@ def index():
 def run_script():
 
     data = request.json
-    num_files = int(data.get('days', 1))
+    num_files = int(data.get('days', '1'))
+    password = data.get('password', "")
+
+    if password != "Black9-2024":
+        return jsonify({
+            'error': "Action not allowed"
+        }), 403
 
     if num_files < 1 or num_files > 4:
         num_files = 1 

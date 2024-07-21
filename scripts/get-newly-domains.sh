@@ -30,12 +30,12 @@ count=0
 while IFS= read -r url && [ "$count" -lt "$file_limit" ]; do
     count=$((count + 1))
     
-    curl -o "$download_dir/file.zip" "$url"
-    unzip -o "$download_dir/file.zip" -d "$extracted_dir"
+    curl -o "$download_dir/file.zip" "$url" 
+    unzip -o "$download_dir/file.zip" -d "$extracted_dir" &> /dev/null
 
     cat "$extracted_dir/domain-names.txt" >> "$merged_file"
 done < "$output_file"
 
-rm -rf "$download_dir" "$extracted_dir"
+rm -rf "$download_dir" "$extracted_dir" 
 
-echo "Merged file created at $merged_file"
+echo "The database has been updated with the new domains of the last $file_limit day/s"

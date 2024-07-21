@@ -18,21 +18,30 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 	updateButton.addEventListener('click', function() {
+    	let password = prompt("Please, enter the password:");
+    	document.getElementById('gifContainer').style.display = 'flex';
+
 		fetch('/run-script', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ days: number_of_days.value }) // Datos que se envían al servidor
+			body: JSON.stringify({password: password, days: number_of_days.value }) // Datos que se envían al servidor
 		})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Success:', data);
-			alert('Database successfully updated.');
+			if(data.error){
+				alert(data.error);
+			}else{
+				alert(data.success);
+			}
 		})
 		.catch((error) => {
 			console.error('Error:', error);
 			alert('It wasn\'t possible to update de database.');
+		}).finally(() => {
+			document.getElementById('gifContainer').style.display = 'none';
 		});
 	});
 
