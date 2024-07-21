@@ -10,7 +10,12 @@
 <body>
 
 	<div id="gifContainer">
-		<img src="{{ url_for('static', filename='clock.gif') }}" alt="Updating de database...">
+		
+		<div style="background-color: white; padding: 10px; text-align: center; border-radius: 5px;">
+			<img src="{{ url_for('static', filename='clock.gif') }}" alt="Updating de database...">
+			<br>
+			<span sytle="font-size: 34pt">Please, wait a moment</span>
+		</div>
 	</div>
 
     <main>

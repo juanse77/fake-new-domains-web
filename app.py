@@ -59,7 +59,7 @@ def index():
 def run_script():
 
     data = request.json
-    num_files = int(data.get('days', '1'))
+    num_files = int(data.get('days') or '1')
     password = data.get('password', "")
 
     if password != "Black9-2024":
