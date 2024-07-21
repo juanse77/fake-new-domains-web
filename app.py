@@ -61,6 +61,9 @@ def run_script():
     data = request.json
     num_files = int(data.get('days', 1))
 
+    if num_files < 1 or num_files > 4:
+        num_files = 1 
+
     result = get_new_domains(num_files)
     if isinstance(result, subprocess.CalledProcessError):
         return jsonify({
