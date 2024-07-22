@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -z "$1" ]; then
   echo "Use: $0 <number-of-days>"
@@ -16,6 +16,12 @@ download_dir="~/temp/downloads"
 extracted_dir="~/temp/extracted"
 merged_file="/app/static/domain-names.txt"
 
+echo "" > "~/temp/New-Domains.html"
+echo "" > "~/temp/links.txt"
+mkdir -p "~/temp/downloads"
+mkdir -p "~/temp/extracted"
+echo > "/app/static/domain-names.txt"
+
 curl -o "~/temp/New-Domains.html" https://www.whoisds.com/newly-registered-domains
 
 mkdir -p "$download_dir"
@@ -23,7 +29,7 @@ mkdir -p "$extracted_dir"
 
 grep -oE 'https://www.whoisds.com//whois-database/newly-registered-domains[^"]*' "$input_file" > "$output_file"
 
-> "$merged_file"
+echo "" > "$merged_file"
 
 count=0
 

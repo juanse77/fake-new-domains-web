@@ -137,11 +137,6 @@ button {
 	z-index: 1000;
 }
 
-#gifContainer img {
-	width: 200px;
-	height: auto;
-}
-
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     body {

@@ -59,7 +59,7 @@ def index():
 def run_script():
 
     data = request.json
-    num_files = int(data.get('days') or '1')
+    num_files = int(data.get('days') or '2')
     password = data.get('password', "")
 
     if password != "Black9-2024":
@@ -91,7 +91,7 @@ def get_domains():
 
 if __name__ == '__main__':
     try:
-        get_new_domains(1)
+        get_new_domains(2)
     except Exception as e:
         print(f"Error occurred: {e}")
                
