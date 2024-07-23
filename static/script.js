@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+	addedDomains = [];
+
     const dropdown = document.getElementById('dropdown');
     const resultsTable = document.getElementById('results-table').getElementsByTagName('tbody')[0];
     const addButton = document.getElementById('add');
@@ -47,11 +50,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     addButton.addEventListener('click', function() {
         const selectedDomains = getSelectedDomains();
+		addedDomains.concat(selectedDomains);
+		deleteSelectedRows();
         addDomainsToTextarea(selectedDomains);
     });
 
 	clearButton.addEventListener('click', function() {
+		addedDomains = [];
 		textarea.value = "";
+
+		let event = new Event('change');
+		dropdown.dispatchEvent(event)
 	});
 
 	exportButton.addEventListener('click', function() {
@@ -65,23 +74,39 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         domains.forEach(domain => {
-            const row = document.createElement('tr');
+			if(!addedDomains.includes(domain)) {
+				const row = document.createElement('tr');
 
-            const checkboxCell = document.createElement('td');
-            checkboxCell.classList.add('checkbox');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.value = domain;
-            checkboxCell.appendChild(checkbox);
-            row.appendChild(checkboxCell);
+				const checkboxCell = document.createElement('td');
+				checkboxCell.classList.add('checkbox');
+				const checkbox = document.createElement('input');
+				checkbox.type = 'checkbox';
+				checkbox.value = domain;
+				checkboxCell.appendChild(checkbox);
+				row.appendChild(checkboxCell);
 
-            const domainCell = document.createElement('td');
-            domainCell.textContent = domain;
-            row.appendChild(domainCell);
+				const domainCell = document.createElement('td');
+				domainCell.textContent = domain;
+				row.appendChild(domainCell);
 
-            resultsTable.appendChild(row);
+				resultsTable.appendChild(row);
+			}
+            
         });
     }
+
+	function deleteSelectedRows() {
+		let table = document.getElementById('results-table');
+		let rows = table.getElementsByTagName('tr');
+
+		for (var i = rows.length - 1; i >= 0; i--) {
+			let checkbox = rows[i].getElementsByTagName('input')[0];
+
+			if (checkbox && checkbox.checked) {
+				table.deleteRow(i);
+			}
+		}
+	}
 
     function getSelectedDomains() {
         const checkboxes = resultsTable.querySelectorAll('input[type="checkbox"]:checked');
