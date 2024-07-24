@@ -137,6 +137,20 @@ button {
 	z-index: 1000;
 }
 
+.footer-mission {
+    display: block;
+    margin: 10px 10px 0px 10px;
+    text-align: justify;
+    padding: 5px 20px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+a, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     body {

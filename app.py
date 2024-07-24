@@ -8,7 +8,7 @@ def get_domains_by_pattern(pattern):
     domains_file_path = os.path.join(os.path.dirname(__file__), 'static', 'domain-names.txt')
     patterns_file_path = os.path.join(app.static_folder, 'patterns.txt')
 
-    patterns = ["Select the pattern to find"]
+    patterns = []
     domains = []
 
     if not os.path.exists(domains_file_path):
@@ -18,6 +18,10 @@ def get_domains_by_pattern(pattern):
         with open(patterns_file_path, 'r') as file:
             for line in file:
                 patterns.append(line.strip())
+            
+            patterns.sort()
+            patterns.insert(0, "Select the pattern to find")
+            
     else:
         patterns.append("Patterns file not found")
 
