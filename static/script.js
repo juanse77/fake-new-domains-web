@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	updateButton.addEventListener('click', function() {
     	let password = prompt("Please, enter the password:");
+        if(password === null) return;
     	document.getElementById('gifContainer').style.display = 'flex';
 
 		fetch('/run-script', {
