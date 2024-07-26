@@ -19,21 +19,6 @@ Fake New Domains is an application designed to protect against phishing by detec
 2. Click on "Add Selected" to add domains to the list.
 3. Use the buttons to export the selected domains o clear the list.
 
-### Shell Script:
-
-The provided shell script `get-newly-domains.sh` automates the process of fetching and updating the database with newly registered domains.
-
-### Script Details:
-
-The script performs the following actions:
-
-1. Creates necessary directories and files.
-2. Downloads the HTML file containing newly registered domains.
-3. Extracts the URLs of ZIP files containing domain names.
-4. Downloads and unzips these files.
-5. Merges the domain names into a single file.
-6. Cleans up temporary files and directories.
-
 ## Contributing:
 
 1. Fork the repository.
