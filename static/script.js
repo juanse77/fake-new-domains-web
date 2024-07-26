@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({password: password, days: number_of_days.value }) // Datos que se envían al servidor
+			body: JSON.stringify({password: password, days: number_of_days.value })
 		})
 		.then(response => response.json())
 		.then(data => {

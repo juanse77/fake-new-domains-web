@@ -6,7 +6,8 @@ RUN apk update && apk add --no-cache \
     musl-dev \
     libffi-dev \
     openssl-dev \
-    make
+    make \
+    bash
 
 RUN mkdir -p ~/temp
 RUN mkdir -p /app
@@ -26,8 +27,12 @@ COPY static /app/static
 COPY scripts /app/scripts
 COPY templates /app/templates
 
-COPY app.py /app/
+COPY main.py /app/
+COPY unzip.py /app/
+COPY mycron.py /app/
+
+COPY start.sh /app/
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["/bin/bash", "-c", "./start.sh"]

@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def get_domains_by_pattern(pattern):
     domains_file_path = os.path.join(os.path.dirname(__file__), 'static', 'domain-names.txt')
-    patterns_file_path = os.path.join(app.static_folder, 'patterns.txt')
+    patterns_file_path = os.path.join(os.path.dirname(__file__), 'static', 'patterns.txt')
 
     patterns = []
     domains = []
@@ -66,7 +66,7 @@ def run_script():
     num_files = int(data.get('days') or '2')
     password = data.get('password', "")
 
-    if password != "Black9-2024":
+    if password != "fake":
         return jsonify({
             'error': "Action not allowed"
         }), 403
@@ -93,10 +93,5 @@ def get_domains():
     return jsonify({'domains': domains})
 
 
-if __name__ == '__main__':
-    try:
-        get_new_domains(2)
-    except Exception as e:
-        print(f"Error occurred: {e}")
-               
+if __name__ == '__main__':               
     app.run(debug=True, host="0.0.0.0")
