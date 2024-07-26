@@ -1,9 +1,12 @@
 import os
 from flask import Flask, request, jsonify, render_template
 import subprocess
-import datetime
 
-last_update = datetime.datetime.now().strftime("%A, %B %d, %Y %H:%M:%S")
+import datetime
+import pytz
+
+timezone = pytz.timezone('UTC')
+last_update = datetime.datetime.now(timezone).strftime("%A, %B %d, %Y %H:%M:%S %Z")
 
 app = Flask(__name__)
 
@@ -68,6 +71,7 @@ def index():
 
 @app.route('/run-script', methods=['POST'])
 def run_script():
+    global last_update
 
     data = request.json
     num_files = int(data.get('days') or '2')
@@ -87,11 +91,11 @@ def run_script():
             'error': f"An error occurred: {result.stderr.strip()}"
         }), 500
 
-    last_update = datetime.datetime.now().strftime("%A, %B %d, %Y %H:%M:%S")
+    last_update = datetime.datetime.now(timezone).strftime("%A, %B %d, %Y %H:%M:%S %Z")
 
     return jsonify({
         'success': result.stdout.strip(),
-        'datetime': last_update
+        'last_update': last_update
     })
 
 

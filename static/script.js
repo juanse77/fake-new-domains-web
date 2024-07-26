@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	const exportButton = document.getElementById('export');
 	const updateButton = document.getElementById('update');
 	const number_of_days = document.getElementById('days');
-
+    const last_update = document.getElementById('last_update');
 
     dropdown.addEventListener('change', function() {
         const selectedPattern = dropdown.value;
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				alert(data.error);
 			}else{
 				alert(data.success);
+                last_update.innerHTML = "Domain - Last update: " + data.last_update; 
 			}
 		})
 		.catch((error) => {
