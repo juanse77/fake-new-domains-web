@@ -1,6 +1,9 @@
 import os
 from flask import Flask, request, jsonify, render_template
 import subprocess
+import datetime
+
+last_update = datetime.datetime.now().strftime("%A, %B %d, %Y %H:%M:%S")
 
 app = Flask(__name__)
 
@@ -32,7 +35,10 @@ def get_domains_by_pattern(pattern):
                     domains.append(line.strip())
     else:
         domains.append("Domains file not found")
-        
+
+    if len(domains) == 0:
+        domains.append("No results")
+
     return domains, patterns
 
 
@@ -55,7 +61,8 @@ def index():
         "index.html",
         domains=domains,
         patterns=patterns,
-        selected_pattern=pattern_index
+        selected_pattern=pattern_index,
+        last_update=last_update
     )
 
 
@@ -80,8 +87,11 @@ def run_script():
             'error': f"An error occurred: {result.stderr.strip()}"
         }), 500
 
+    last_update = datetime.datetime.now().strftime("%A, %B %d, %Y %H:%M:%S")
+
     return jsonify({
-        'success': result.stdout.strip()
+        'success': result.stdout.strip(),
+        'datetime': last_update
     })
 
 
