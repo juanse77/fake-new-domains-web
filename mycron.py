@@ -1,19 +1,12 @@
-import os
-import subprocess
 import time
+import requests
 
+URL = 'http://127.0.0.1:5000/run-script'
+DATA = {"days": "2", "password": "fake"}
 
-def execute_script():
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    script_path = os.path.join(current_directory, "scripts",
-                               "get-newly-domains.sh")
-
-    result = subprocess.run([script_path, '2'], capture_output=True, text=True)
-
-    if result.returncode == 0:
-        print(f"get-newly-domains.sh: {result.stdout}")
-    else:
-        print(f"get-newly-domains.sh: {result.stderr}")
+def execute_script():    
+    response = requests.post(URL, json=DATA, verify=False)
+    print("Respuesta del servidor:", response.text)
 
 
 def main():
