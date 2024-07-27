@@ -6,7 +6,7 @@ import datetime
 import pytz
 
 timezone = pytz.timezone('UTC')
-last_update = datetime.datetime.now(timezone).strftime("%A, %B %d, %Y %H:%M:%S %Z")
+last_update = "Database empty"
 
 app = Flask(__name__)
 
@@ -16,9 +16,6 @@ def get_domains_by_pattern(pattern):
 
     patterns = []
     domains = []
-
-    if not os.path.exists(domains_file_path):
-        get_new_domains(1)
 
     if os.path.exists(patterns_file_path):
         with open(patterns_file_path, 'r') as file:
