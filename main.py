@@ -57,7 +57,7 @@ def get_new_domains(num_files):
 
 @app.after_request
 def add_security_headers(response):
-    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['X-Frame-Options'] = 'DENY'
     return response
 
 
