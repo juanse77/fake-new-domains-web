@@ -55,6 +55,12 @@ def get_new_domains(num_files):
         return e
 
 
+@app.after_request
+def add_security_headers(response):
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    return response
+
+
 @app.route('/', methods=['GET'])
 def index():
     pattern_index = request.args.get('pattern', 0)

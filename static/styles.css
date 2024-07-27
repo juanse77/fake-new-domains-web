@@ -139,7 +139,7 @@ button {
 
 .footer-mission {
     display: block;
-    margin: 10px 10px 0px 10px;
+    margin: 15px 10px 5px 10px;
     text-align: justify;
     padding: 5px 20px;
     background: #eee;
@@ -149,6 +149,7 @@ button {
 a, a:visited {
     color: black;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* Media queries for responsiveness */
