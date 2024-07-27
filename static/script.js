@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		let event = new Event('change');
 		dropdown.dispatchEvent(event)
+        exportButton.disabled = true;
 	});
 
 	exportButton.addEventListener('click', function() {
@@ -120,22 +121,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function addDomainsToTextarea(domains) {
-        domains.forEach(domain => {
-            textarea.value += domain + '\n';
-        });
-		textarea.value += '\n';
+        if(domains.length > 0){
+            exportButton.disabled = false;
+            domains.forEach(domain => {
+                textarea.value += domain + '\n';
+            });
+            textarea.value += '\n';
+        }
     }
 
 	function generateTxtFile() {
-	
-		const blob = new Blob([textarea.value], { type: 'text/plain' });
-		const link = document.createElement('a');
-	
-		link.href = URL.createObjectURL(blob);
-		link.download = 'fake-domains.txt';
+
+        const blob = new Blob([textarea.value], { type: 'text/plain' });
+        const link = document.createElement('a');
+    
+        link.href = URL.createObjectURL(blob);
+        link.download = 'fake-domains.txt';
+        
+        link.click();
+        URL.revokeObjectURL(link.href);
 		
-		link.click();
-		URL.revokeObjectURL(link.href);
 	}
 
 });

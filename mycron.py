@@ -12,7 +12,7 @@ def execute_script():
 def main():
     while True:
         execute_script()
-        time.sleep(6 * 60 * 60)
+        time.sleep(2 * 60 * 60)
 
 
 if __name__ == "__main__":

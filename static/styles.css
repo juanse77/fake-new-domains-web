@@ -60,19 +60,6 @@ button {
     cursor: pointer;
 }
 
-#add {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    margin: 10px 0;
-}
-
-#clear, #export, #update {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-}
-
 textarea {
     width: 100%;
     margin: 15px 0 0 0;
@@ -91,6 +78,9 @@ th {
 }
 
 button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
     width: 100%;
     max-width: 200px;
     border-radius: 5px;
@@ -116,11 +106,16 @@ button {
     align-items: center;
 }
 
-#add:hover, #clear:hover, #export:hover, #update:hover {
+button:hover {
     background-color: #367d41;
 }
 
-#add:active, #clear:active, #export:active, #update:active {
+button:disabled {
+    background-color: #a6cda1;
+    cursor: default;
+}
+
+button:not(:disabled):active {
     background-color: #4CAF50;
 }
 
@@ -150,6 +145,10 @@ a, a:visited {
     color: black;
     text-decoration: none;
     font-weight: bold;
+}
+
+#add {
+    margin-top: 10px;
 }
 
 /* Media queries for responsiveness */
