@@ -45,8 +45,15 @@
 				<tbody>
 				{% for domain in domains %}
 				<tr>
-					<td class="checkbox"><input type="checkbox" class="selected" value="{{ domain }}"></td>
-					<td>{{ domain }}</td>
+                    {% if domain == "No results" %}
+					    <td class="checkbox" style="background-color: rgb(249, 245, 240);"><input type="checkbox" disabled="disabled"></td>
+                        <td style="background-color:rgb(249, 245, 240);">{{ domain }}</td>
+                    {% else %}
+                        <td class="checkbox"><input type="checkbox" class="selected" value="{{ domain }}"></td>
+                        <td>{{ domain }}</td>
+                    {% endif %}
+
+					
 				</tr>
 				{% endfor %}
 				</tbody>

@@ -105,6 +105,12 @@ document.addEventListener("DOMContentLoaded", function() {
 				row.appendChild(domainCell);
 
 				resultsTable.appendChild(row);
+
+                if(domain === "No results"){
+                    checkbox.disabled = true;
+                    checkboxCell.style = "background-color: rgb(249, 245, 240);"
+                    domainCell.style = "background-color: rgb(249, 245, 240);"
+                }
 			}
             
         });
