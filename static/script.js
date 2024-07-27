@@ -50,11 +50,21 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	});
 
+    number_of_days.addEventListener('input', function() {
+        if(number_of_days.value !== ""){
+            updateButton.disabled = false;
+        }else{
+            updateButton.disabled = true;
+        }
+    });
+
     addButton.addEventListener('click', function() {
         const selectedDomains = getSelectedDomains();
 		addedDomains.concat(selectedDomains);
-		deleteSelectedRows();
+		
+        deleteSelectedRows();
         addDomainsToTextarea(selectedDomains);
+        activateCheckboxEvents();
     });
 
 	clearButton.addEventListener('click', function() {
@@ -64,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		let event = new Event('change');
 		dropdown.dispatchEvent(event)
         exportButton.disabled = true;
+        clearButton.disabled = true;
 	});
 
 	exportButton.addEventListener('click', function() {
@@ -85,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				const checkbox = document.createElement('input');
 				checkbox.type = 'checkbox';
 				checkbox.value = domain;
+                checkbox.className = 'selected';
 				checkboxCell.appendChild(checkbox);
 				row.appendChild(checkboxCell);
 
@@ -96,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
             
         });
+
+        activateCheckboxEvents();
     }
 
 	function deleteSelectedRows() {
@@ -127,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 textarea.value += domain + '\n';
             });
             textarea.value += '\n';
+            clearButton.disabled = false;
         }
     }
 
@@ -142,5 +157,23 @@ document.addEventListener("DOMContentLoaded", function() {
         URL.revokeObjectURL(link.href);
 		
 	}
+
+    function activateCheckboxEvents() {
+        const checkboxes = document.querySelectorAll('.selected');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                let all_disabled = true;
+                checkboxes.forEach(function(cb) {
+                    if(cb.checked){
+                        all_disabled = false;
+                    }
+                });
+                addButton.disabled = all_disabled;
+            });
+        });
+
+        addButton.disabled = true;
+    }
 
 });

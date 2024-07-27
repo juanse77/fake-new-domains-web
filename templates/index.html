@@ -45,7 +45,7 @@
 				<tbody>
 				{% for domain in domains %}
 				<tr>
-					<td class="checkbox"><input type="checkbox" value="{{ domain }}"></td>
+					<td class="checkbox"><input type="checkbox" class="selected" value="{{ domain }}"></td>
 					<td>{{ domain }}</td>
 				</tr>
 				{% endfor %}
@@ -54,18 +54,18 @@
 		</div>
 
         <div class="actions">
-            <button id="add">Add Selected</button>
+            <button id="add" disabled="disabled">Add Selected</button>
         </div>
         
         <textarea id="results" rows="10" cols="50" placeholder="Selected items will appear here..." readonly></textarea>
 
         <div>
             <div class="actions">
-                <button id="clear">Clear</button>
+                <button id="clear" disabled="disabled">Clear</button>
                 <button id="export" disabled="disabled">Export</button>
             </div>
             <div class="actions">
-                <button id="update">Update database</button>
+                <button id="update" disabled="disabled">Update database</button>
                 <input type="text" id="days" placeholder="1-4 days">
                 </div>
         </div>
@@ -88,7 +88,6 @@
 
         </footer>
           
-    
     </main>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
