@@ -67,6 +67,7 @@ textarea {
     padding: 10px;
     box-sizing: border-box;
     resize: none;
+    height: 260px;
 }
 
 th {
@@ -83,22 +84,26 @@ button {
     color: white;
     border: 1px solid black;
     width: 100%;
-    max-width: 200px;
+    max-width: 260px;
     border-radius: 5px;
 	margin: 5px;
+    font-size: 10pt;
+    padding: 8px;
 }
 
 #domains {
-    height: 400px;
+    height: 360px;
     overflow: auto;
     background-color: white;
     border: 1px solid gray;
+
 }
 
 #days {
     width: 100px;
-    height: 26px;
+    height: 24px;
 	margin: 5px;
+    font-size: 10pt;
 }
 
 .actions {
@@ -179,7 +184,7 @@ input {
     }
 
     table, textarea {
-        font-size: 14px;
+        font-size: 10pt;
     }
 
     th, td {
@@ -188,6 +193,7 @@ input {
 
     button {
         width: 100%;
+        max-width: 160px;
     }
 }
 
@@ -203,9 +209,10 @@ input {
     button {
         padding: 8px;
         margin: 5px;
+        max-width: 150;
     }
 
     textarea {
-        height: 150px;
+        height: 230px;
     }
 }
