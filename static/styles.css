@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0 10px;
     box-sizing: border-box;
+    user-select: none;
 }
 
 main {
@@ -80,7 +81,7 @@ th {
 button {
     background-color: #4CAF50;
     color: white;
-    border: none;
+    border: 1px solid black;
     width: 100%;
     max-width: 200px;
     border-radius: 5px;
@@ -91,6 +92,7 @@ button {
     height: 400px;
     overflow: auto;
     background-color: white;
+    border: 1px solid gray;
 }
 
 #days {
@@ -112,6 +114,7 @@ button:hover {
 
 button:disabled {
     background-color: #a6cda1;
+    border: 1px solid gray;
     cursor: default;
 }
 
@@ -133,6 +136,7 @@ button:not(:disabled):active {
 }
 
 .footer-mission {
+    border: 1px solid gray;
     display: block;
     margin: 15px 10px 5px 10px;
     text-align: justify;
@@ -149,6 +153,15 @@ a, a:visited {
 
 #add {
     margin-top: 10px;
+}
+
+input {
+    border: 1px solid gray;
+}
+
+.domain-row:hover td {
+    background-color: #dff7d5;
+    cursor: pointer; 
 }
 
 /* Media queries for responsiveness */

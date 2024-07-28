@@ -106,16 +106,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
 				resultsTable.appendChild(row);
 
-                if(domain === "No results"){
+                if(domain === "No results") {
                     checkbox.disabled = true;
                     checkboxCell.style = "background-color: rgb(249, 245, 240);"
                     domainCell.style = "background-color: rgb(249, 245, 240);"
+                } else {
+                    row.className = "domain-row";
                 }
 			}
             
         });
 
         activateCheckboxEvents();
+        activateRowSelection();
     }
 
 	function deleteSelectedRows() {
@@ -170,16 +173,42 @@ document.addEventListener("DOMContentLoaded", function() {
         checkboxes.forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
                 let all_disabled = true;
+
                 checkboxes.forEach(function(cb) {
                     if(cb.checked){
                         all_disabled = false;
                     }
                 });
+
                 addButton.disabled = all_disabled;
+
             });
-        });
+
+        });        
 
         addButton.disabled = true;
+    }
+
+    function activateRowSelection() {
+        const domainRows = document.querySelectorAll('.domain-row');
+
+        domainRows.forEach(function(row) {
+            row.addEventListener('click', function(event) {
+
+                if (event.target.type !== 'checkbox') {
+                    let checkbox = row.querySelector('.selected');
+
+                    if (checkbox) {
+                        checkbox.checked = !checkbox.checked;
+
+                        var changeEvent = new Event('change');
+                        checkbox.dispatchEvent(changeEvent);
+                    }
+                }
+
+            });
+
+        });
     }
 
 });
