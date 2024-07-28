@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 	addedDomains = [];
+    keys = new Set();
 
     const dropdown = document.getElementById('dropdown');
     const resultsTable = document.getElementById('results-table').getElementsByTagName('tbody')[0];
@@ -60,15 +61,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     addButton.addEventListener('click', function() {
         const selectedDomains = getSelectedDomains();
-		addedDomains.concat(selectedDomains);
+		addedDomains.push(...selectedDomains);
 		
         deleteSelectedRows();
         addDomainsToTextarea(selectedDomains);
+
         activateCheckboxEvents();
     });
 
 	clearButton.addEventListener('click', function() {
 		addedDomains = [];
+        keys = new Set();
 		textarea.value = "";
 
 		let event = new Event('change');
@@ -136,24 +139,46 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function getSelectedDomains() {
         const checkboxes = resultsTable.querySelectorAll('input[type="checkbox"]:checked');
+        
+        const selectedOption = dropdown.options[dropdown.selectedIndex];
+        const key = selectedOption.getAttribute("data-domain");
+
         const selectedDomains = [];
+
+        keys.add(key);
+
         checkboxes.forEach(checkbox => {
-            selectedDomains.push(checkbox.value);
+            selectedDomains.push({key: key, value: checkbox.value});
         });
+
         return selectedDomains;
     }
 
     function addDomainsToTextarea(domains) {
         if(domains.length > 0){
+            textarea.value = "";
             exportButton.disabled = false;
-            domains.forEach(domain => {
-                textarea.value += domain + '\n';
+
+            keys.forEach(key => {
+                textarea.value += `[+]____ ${key} ____[+]\n`;
+
+                aux_domains = getDomainsByKey(key);
+                
+                aux_domains.forEach(aux_domain => {
+                    textarea.value += aux_domain + '\n';
+                });
+                
             });
+
             textarea.value += '\n';
             clearButton.disabled = false;
         }
     }
-
+    
+    function getDomainsByKey(key) {
+        return addedDomains.filter(elem => elem.key === key).map(elem => elem.value);
+    }
+    
 	function generateTxtFile() {
 
         const blob = new Blob([textarea.value], { type: 'text/plain' });

@@ -14,9 +14,9 @@ body {
 }
 
 main {
-    width: 100%;
+    width: 96%;
 	max-width: 800px;
-    padding: 5px 15px 25px 15px;
+    padding: 5px 15px 10px 15px;
     margin: 0 auto;
     height: 100%;
     background-color: #dde5e9;
@@ -63,7 +63,7 @@ button {
 
 textarea {
     width: 100%;
-    margin: 15px 0 0 0;
+    margin: 15px 0 5px 0;
     padding: 10px;
     box-sizing: border-box;
     resize: none;
@@ -120,6 +120,10 @@ button:disabled {
 
 button:not(:disabled):active {
     background-color: #4CAF50;
+}
+
+#clear, #export {
+    margin-top: 5px;
 }
 
 #gifContainer {
