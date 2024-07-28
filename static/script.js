@@ -91,7 +91,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         domains.forEach(domain => {
-			if(!addedDomains.includes(domain)) {
+			const auxAddedDomains = addedDomains.map(elem => elem.value);
+            
+            if(!auxAddedDomains.includes(domain)) {
 				const row = document.createElement('tr');
 
 				const checkboxCell = document.createElement('td');
