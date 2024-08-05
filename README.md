@@ -41,8 +41,11 @@ Now, you can access to the application in http://localhost:5000
 
 This project is licensed under the MIT License.
 
-## Contact
+## Contact:
 
 For any questions or support, please contact [juanse77-ccdani@hotmail.com](mailto:juanse77-ccdani@hotmail.com).
+
+## Donate:
+If you want to contribute to our initiative, please [support us with a coffee](https://buymeacoffee.com/fake.new.domains) ;D
 
 &copy; 2024 Fake New Domains
